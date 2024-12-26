@@ -1,0 +1,189 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image:linear-gradient(rgba(0, 0, 0, 1), rgba(128, 128, 128, 0.5)),url("./images/bmr-calculator.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+
+}
+.container{
+    background-color: orangered;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.heading{
+    font-size: 20px;
+}
+.navbar{
+    width:100%;
+    height:50px;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    padding:30px 20px;
+    background-color: aquamarine;
+}
+.menu{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    list-style-type: none;
+
+}
+.menu li{
+    margin:10px 20px;
+}
+.navbar .logo{
+    color: blue;
+    font-size: 50px;
+}
+.menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+.active{
+    background-color: blue;
+    padding:10px 20px;
+    border-radius: 5px;
+}
+.calaries{
+    margin:10px 20px;
+    font-size: 30px;
+    line-height: 70px;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+    input[type="number"],
+    input[type="radio"] {
+      font-size: 18px;  
+      padding: 10px;     
+      margin: 5px 0;    
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 250px;      
+    }
+input[type="radio"]{
+    width: auto;
+    margin-right: 10px;
+}
+select{
+    font-size: 18px;  
+      padding: 10px;     
+      margin: 5px 0;    
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 250px;
+}
+button{
+    border:none;
+    font-weight: bold;
+    color:white;
+    background-color: orangered;
+    font-size: 30px;
+    padding:10px 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: gray;
+    border-style: solid;
+    box-shadow: 0 0 gray;
+}
+.bmr_link{
+    text-decoration: none;
+    color: white;
+    background-color: gray;
+    border-style: solid;
+    font-size: 30px;
+    padding:10px 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+.bmr_link:hover{
+    background-color: orangered;
+    border-radius: 30px;
+}
+.table_main{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;
+    margin-top: 2px;
+}
+.loss,tr,th,td{
+    border-style: solid;
+    text-align: center;
+}
+.gain,tr,th,td{
+    border-style:solid;
+    text-align: center;
+}
+
+.cal_link{
+    text-decoration: none;
+    color: white;
+    background-color: gray;
+    border-style: solid;
+    font-size: 30px;
+    padding:10px 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    white-space: nowrap;
+}
+.cal_link:hover{
+    background-color: orangered;
+    border-radius: 30px;
+}
+.calaries p{
+    word-wrap: break-word;
+    white-space:normal;
+}
+
+@media screen and (max-width: 819px) {
+    .navbar {
+        display: none;
+    }
+}
+@media screen and (min-width: 820px) {
+    .calaries .cal_link,.links {
+        display: none;
+    }
+}
+@media screen and (max-width: 819px) {
+    .navbar {
+        display: none;
+    }
+    .table_main{
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 30px;
+        margin: 20px 10px;
+    }
+    .loss,tr,th,td{
+        border-style: solid;
+        text-align: center;
+    }
+    .gain,tr,th,td{
+        border-style:solid;
+        text-align: center;
+    }
+}

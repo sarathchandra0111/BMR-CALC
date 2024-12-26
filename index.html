@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMR calculator</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <nav class="container">
+        <div class="heading">
+            <h1>BMR CALCULATOR</h1>
+            <p>BMR calculator by SARATH</p>
+        </div>
+    </nav>
+    <nav class="navbar">
+        <div class="logo">calic-cal.net</div>
+        <ul class="menu">
+            <li><a href="./index.html" class="active">BMR</a></li>
+            <li><a href="./calaries.html">Calaries</a></li>
+            <li><a href="./weight_gain_or_loss.html">Calaries for weight loss or gain</a></li>
+        </ul>
+    </nav>
+    <div class="bmr">
+        <h1>Enter Details</h1>
+        <form>
+            <lable for="age">AGE:</lable>
+            <input type="text" id="age" placeholder="age"/><br>
+            <lable for="gender">Gender:</lable>
+            <input type="radio" name="gender" id="male" value="male"/>Male
+            <input type="radio" name="gender" id="female" value="female"/>Female<br>
+            <lable for="height">Height(cm):</lable>
+            <input type="number" id="height" placeholder="height"/><br>
+            <lable for="weight">Weight(Kg):</lable>
+            <input type="number" id="weight" placeholder="weight"/><br>
+            <button type="button" onclick="bmr()">Calculate</button>
+        </form>
+        <p>Your Bmr Is:<mark><span id=finalbmr></span></mark></p>
+        <p class="links">Check your Calaries <a href="./calaries.html" class="cal_link">Calaries</a> and Calaries intake per day <a href="./weight_gain_or_loss.html" class="cal_link">Calaries per day</a></p>
+    </div>
+    <script>
+        function bmr(){
+            var age=Number(document.getElementById("age").value);
+            var gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : "";
+            var height=Number(document.getElementById("height").value);
+            var weight=Number(document.getElementById("weight").value);
+            var BMR=0;
+            if (!age || !gender || !height || !weight){
+                document.getElementById("finalbmr").innerHTML="invalid input";
+                return; 
+            }
+            if (gender=="male"){
+                BMR=10*weight+6.25*height-5*age+5;
+            }else if (gender=="female"){
+                BMR=10*weight+6.25*height-5*age-161;
+            }else{
+                document.getElementById("finalbmr").innerHTML="invalid input";
+                return;
+            }
+            document.getElementById("finalbmr").innerHTML=Math.round(BMR);
+        }
+    </script>
+</body>
+</html>

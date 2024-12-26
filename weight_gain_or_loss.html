@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMR calculator</title>
+    <link rel="stylesheet" href="weight_gain_or_loss.css">
+</head>
+<body>
+    <nav class="container">
+        <div class="heading">
+            <h1>Calaries CALCULATOR</h1>
+            <p>Calaries calculator by SARATH</p>
+        </div>
+    </nav>
+    <nav class="navbar">
+        <div class="logo">calic-cal.net</div>
+        <ul class="menu">
+            <li><a href="./index.html">BMR</a></li>
+            <li><a href="./calaries.html">Calaries</a></li>
+            <li><a href="./weight_gain_or_loss.html" class="active">Calaries for weight loss or gain</a></li>
+        </ul>
+    </nav>
+    <div class="calaries">
+        <h1>Enter Details</h1>
+        <form>
+            <lable for="age">AGE:</lable>
+            <input type="text" id="age" placeholder="age"/><br>
+            <lable for="gender">Gender:</lable>
+            <input type="radio" name="gender" id="male" value="male"/>Male
+            <input type="radio" name="gender" id="female" value="female"/>Female<br>
+            <lable for="height">Height(cm):</lable>
+            <input type="number" id="height" placeholder="height"/><br>
+            <lable for="weight">Weight(Kg):</lable>
+            <input type="number" id="weight" placeholder="weight"/><br>
+            <lable for="activity_level">Activity Level:</lable>
+            <select  id="activity_level" name="Activity Level">
+            <option value="0" selected>BMR</option>
+            <option value="1">Sedentary (little to no exercise)</option>
+            <option value="2">Light activity (1-3 days/week)</option>
+            <option value="3">Moderate activity (3-5 days/week)</option>
+            <option value="4">Very active (6-7 days/week)</option>
+            <option value="5">Extremely active (intense exercise)</option>
+            </select><br>
+            <button type="button" onclick="calaries()">Calculate</button>
+        </form>
+
+        <p>Your dialy calaries intake should be:<mark><span id=finalcalaries></span></mark></p>
+    </div>
+    <div class="table_main">
+        <table class="loss">
+            <tr>
+                <th colspan="2">Calaries</th>
+            </tr>
+            <tr>
+                <td>Mild Weight Loss</td>
+                <td><span id="mild_loss"></span></td>
+            </tr>
+            <tr>
+                <td>Weight Loss</td>
+                <td><span id="normal_loss"></span></td>
+            </tr>
+            <tr>
+                <td>Extrem Weight Loss</td>
+                <td><span id="extrem_loss"></span></td>
+            </tr>
+        </table>
+        <table class="gain">
+            <tr>
+                <th colspan="2">Calaries</th>
+            </tr>
+            <tr>
+                <td>Mild Weight Gain</td>
+                <td><span id="mild_gain"></span></td>
+            </tr>
+            <tr>
+                <td>Weight Gain</td>
+                <td><span id="normal_gain"></span></td>
+            </tr>
+            <tr>
+                <td>Extrem Weight Gain</td>
+                <td><span id="extrem_gain"></span></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function calaries(){
+            var age=Number(document.getElementById("age").value);
+            var gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : "";
+            var height=Number(document.getElementById("height").value);
+            var weight=Number(document.getElementById("weight").value);
+            var active_level=Number(document.getElementById("activity_level").value);
+            var BMR=0;
+            var calaries=0;
+
+            if (!age || !gender || !height || !weight){
+                document.getElementById("finalcalaries").innerHTML="invalid input";
+                return; 
+            }
+            if (gender=="male"){
+                BMR=10*weight+6.25*height-5*age+5;
+            }else if (gender=="female"){
+                BMR=10*weight+6.25*height-5*age-161;
+            }else{
+                document.getElementById("finalcalaries").innerHTML="invalid input";
+                return;
+            }
+
+            if (active_level==0){
+                calaries=BMR
+
+            }else if (active_level==1){
+                calaries=BMR*1.2
+
+            }else if(active_level==2){
+                calaries=BMR*1.375
+
+            }else if(active_level==3){
+                calaries=BMR*1.55
+
+            }else if(active_level==4){
+                calaries=BMR*1.725
+
+            }else if(active_level==5){
+                calaries=BMR*1.9
+            }
+            document.getElementById("finalcalaries").innerHTML=Math.round(calaries);
+
+            var for_mild_weight_loss = calaries - (0.25 * 7700)/7;
+            document.getElementById("mild_loss").innerHTML=Math.round(for_mild_weight_loss);
+            var for_weight_loss = calaries - (0.5 * 7700)/7;
+            document.getElementById("normal_loss").innerHTML=Math.round(for_weight_loss);
+            var for_extrem_weight_loss = calaries - (1 * 7700)/7;
+            document.getElementById("extrem_loss").innerHTML=Math.round(for_extrem_weight_loss);
+            
+            var for_mild_weight_gain = calaries + (0.25 * 7700)/7;
+            document.getElementById("mild_gain").innerHTML=Math.round(for_mild_weight_gain);
+            var for_weight_gain = calaries + (0.5 * 7700)/7;
+            document.getElementById("normal_gain").innerHTML=Math.round(for_weight_gain);
+            var for_extrem_weight_gain = calaries + (1 * 7700)/7;
+            document.getElementById("extrem_gain").innerHTML=Math.round(for_extrem_weight_gain);
+        }
+    </script>
+</body>
+</html>
